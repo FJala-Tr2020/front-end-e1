@@ -10,13 +10,19 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
 
+</script>
 </head>
+
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#" onclick="Ocultar()">
-      <img src="assets/images/image2vector.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+      <img src="/assets/images/image2vector.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
       CRM
     </a>
     </button>
@@ -27,7 +33,7 @@
         </li>
       </ul>
       <span class="navbar-text">
-        Version
+        <a class="nav-link " id='leadLink' aria-current="page" href='#' onclick="ClickVersion()">Version</a>
       </span>
     </div>
   </div>
@@ -37,8 +43,28 @@
     <div id='leadTable'></div>
   </lead-table>
 </main>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Version CRM</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <span id='spnVersion'>Version:</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 <script>
+
   const Mostrar = () => {
     document.getElementById('test').className = 'test';
     document.getElementById('leadLink').className = 'nav-link active';
@@ -47,6 +73,29 @@
     document.getElementById('test').className = 'd-none';
     document.getElementById('leadLink').className = 'nav-link';
   }
-  </script>
+
+  var ClickVersion = () => {
+
+
+    // Make a request for a user with a given ID
+    axios.get('http://localhost:3000/version')
+      .then(function (response) {
+        var t = document.getElementById('spnVersion').firstChild;
+        t.nodeValue = "Version: " + response.data.version;
+
+        var myModal = new bootstrap.Modal(document.getElementById('exampleModal'))
+        myModal.show()
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+
+
+  }
+</script>
 
 </html>

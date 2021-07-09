@@ -9,7 +9,7 @@ class LeadTable {
       columns: ['Creation Date', 'Title', 'Name', 'Email', 'Phone', 'City', 'Country', 'Language'],
       server: {
         //url: 'https://api.scryfall.com/cards/search?q=Inspiring',
-        url: 'https://api.scryfall.com/cards/search?q=Inspiring',
+        url: 'http://localhost:3000/leads',
         data: (opts) => {
           return new Promise((resolve, reject) => {
             // let's implement our own HTTP client
@@ -18,13 +18,14 @@ class LeadTable {
               if (this.readyState === 4) {
                 if (this.status === 200) {
                   const resp = JSON.parse(this.response);
-
-                  // make sure the output conforms to StorageResponse format: 
+                  console.log('---------------------->');
+                  console.log(resp);
+                  // make sure the output conforms to StorageResponse format:
                   // https://github.com/grid-js/gridjs/blob/master/src/storage/storage.ts#L21-L24
                   resolve({
-                    data: resp.data.map(lead => [lead.released_at, lead.rarity, lead.name, lead.artist + '@mail.com', lead.collector_number+'-333', 'La Paz', lead.artist, lead.lang]),
+                    data: resp.leads.map(lead => [lead.createDate, lead.title, lead.contactName, lead.email, lead.phone, lead.city, lead.country, lead.language]),
                     //data: resp.map(card => [lead.released_at, lead.rarity, lead.name, lead.artist + '@mail.com', lead.collector_number+'-333', 'La Paz', lead.artist, lead.lang]),
-                    total: resp.total_cards,
+                    total: 2
                   });
                 } else {
                   reject();
