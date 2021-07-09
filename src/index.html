@@ -15,7 +15,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#" onclick="Ocultar()">
+    <a class="navbar-brand" href="#" onclick="HideTable()">
       <img src="assets/images/image2vector.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
       CRM
     </a>
@@ -23,7 +23,7 @@
     <div class="navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link " id='leadLink' aria-current="page" href='#' onclick="Mostrar()">Leads</a>
+          <a class="nav-link " id='leadLink' aria-current="page" href='#' onclick="ShowTable()">Leads</a>
         </li>
       </ul>
       <span class="navbar-text">
@@ -39,11 +39,11 @@
 </main>
 </body>
 <script>
-  const Mostrar = () => {
+  const ShowTable = () => {
     document.getElementById('test').className = 'test';
     document.getElementById('leadLink').className = 'nav-link active';
   }
-  const Ocultar = ()=> {
+  const HideTable = ()=> {
     document.getElementById('test').className = 'd-none';
     document.getElementById('leadLink').className = 'nav-link';
   }
