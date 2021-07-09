@@ -16,3 +16,5 @@ class AppViewModel {
 // console.log('object')
 
 ko.applyBindings(new AppViewModel(), document.getElementById('newPage'));
+
+
