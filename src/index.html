@@ -15,15 +15,16 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="assets/images/image2vector.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+    <a class="navbar-brand" href="#/goToHome">
+      <img src="/assets/images/image2vector.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
       CRM
     </a>
     </button>
     <div class="navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" id='leadLink' aria-current="page" href='pages/leadTable.html'>Leads</a>
+          <a class="nav-link active" id='leadLink' aria-current="page" href='#/foobar'>Leads</a>
+
         </li>
         <!-- <li class="nav-item">
           <a class="nav-link" href="#">Features</a>
@@ -38,10 +39,20 @@
     </div>
   </div>
 </nav>
-<main id='newPage'>
-  <lead-table>
-    <div id='leadTable'></div>
-  </lead-table>
-</main>
+
+<div id='mainView'>
+  <div data-bind="visible: tableLeadsVisible">
+    <main id='newPage'>
+      <lead-table>
+        <div id='leadTable'></div>
+      </lead-table>
+    </main>
+  </div>
+
+</div>
+
+
+
+
 </body>
 </html>
