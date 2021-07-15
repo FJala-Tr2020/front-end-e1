@@ -14,5 +14,8 @@ RUN yarn install --production=true
 
 # Stage 2
 FROM nginx:1.17.1-alpine
+
+EXPOSE 80
+
 COPY --from=build-step /usr/src/app /usr/share/nginx/html
 
