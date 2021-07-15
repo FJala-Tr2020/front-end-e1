@@ -1,10 +1,6 @@
 # Stage 1
 FROM node:12.18-alpine as build-step
 
-ENV NODE_ENV=production
-
-ARG PORT=3000
-
 WORKDIR /usr/src/app
 
 COPY package.json ${WORKDIR}
@@ -16,6 +12,12 @@ RUN yarn install --production=true
 
 # Stage 2
 FROM nginx:1.17.1-alpine
+
+ARG PORT=3000
+
+ENV NODE_ENV=production
+ENV PORT=${PORT}
+
 
 EXPOSE ${PORT}
 
