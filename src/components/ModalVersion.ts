@@ -3,13 +3,17 @@ import * as ko from 'knockout';
 import client from '../api/client';
 
 class ModalVersion {
-  version: ko.Observable<string | null>;
+  version: ko.Observable<string> = ko.observable(' ');
+  pathVersion = '/version';
 
   constructor() {
-    client.get('/version').then(function (response) {
-      window.localStorage.setItem('version', response.data.version);
+    this.sayVersion();
+  }
+
+  sayVersion(): void {
+    client.get(this.pathVersion).then((response) => {
+      return this.version(response.data.version);
     });
-    this.version = ko.observable(window.localStorage.getItem('version'));
   }
 }
 
