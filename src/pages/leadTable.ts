@@ -2,10 +2,14 @@ import template from '../pages/leadTable.html';
 import { Grid } from 'gridjs';
 import axios from 'axios';
 interface ILead {
-  released_at:string
-  name:string
-  artist:string
-
+  createDate:string
+  title:string
+  contactName:string
+  email:string
+  phone:string
+  city:string
+  country:string
+  language:string
 }
 class LeadTable {
   response = {};
@@ -15,11 +19,9 @@ class LeadTable {
       server: {
         data: () => {
           return new Promise((resolve) => {
-            //'http://localhost:3000/leads',
-            axios.get('https://api.scryfall.com/cards/search?q=Inspiring').then(({ data }) => {
+            axios.get('http://localhost:3000/leads').then(({ data }) => {
               resolve({
-                // data: data.data.map(lead => [lead.createDate, lead.title, lead.contactName, lead.email, lead.phone, lead.city, lead.country, lead.language]),
-                data: data.data.map((lead:ILead) => [lead.released_at, lead.name, lead.artist, lead.name+'@mail.com',11111, '2',3,"ESP"]),
+                data: data.data.map((lead:ILead) => [lead.createDate, lead.title, lead.contactName, lead.email, lead.phone, lead.city, lead.country, lead.language]),
                 total: 2
               });
             });
