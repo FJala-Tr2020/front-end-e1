@@ -1,20 +1,27 @@
 import * as ko from 'knockout';
+require('knockout.validation');
 import ModalVersion from './components/ModalVersion';
 import Navbar from './components/Navbar';
 import LeadTable from './pages/leadTable';
 
-require('knockout.validation');
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-ko.components.register('lead-table', LeadTable);
 ko.components.register('modal-version', ModalVersion);
 ko.components.register('navbar', Navbar);
-class AppViewModel {
-  lead: { url: string };
+ko.components.register('lead-table', LeadTable);
+
+class ViewModel {
+  version: string;
+  logo: string;
+  isDisplayed: ko.Observable<boolean>;
   constructor() {
-    this.lead = {
-      url: 'leadTable.html'
-    };
+    this.isDisplayed = ko.observable(false);
+    this.version = 'Version X';
+    this.logo = 'CMS / EQ1';
+  }
+  show() {
+    this.isDisplayed(true);
+  }
+  hide() {
+    this.isDisplayed(false);
   }
 }
-ko.applyBindings(new AppViewModel(), document.getElementById('app'));
+ko.applyBindings(new ViewModel());
