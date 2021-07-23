@@ -1,15 +1,20 @@
 import * as ko from 'knockout';
-require('knockout.validation');
-import 'bootstrap/dist/css/bootstrap.min.css';
+import ModalVersion from './components/ModalVersion';
+import Navbar from './components/Navbar';
 import LeadTable from './pages/leadTable';
 
+require('knockout.validation');
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 ko.components.register('lead-table', LeadTable);
+ko.components.register('modal-version', ModalVersion);
+ko.components.register('navbar', Navbar);
 class AppViewModel {
-  lead: { url: string }
+  lead: { url: string };
   constructor() {
     this.lead = {
       url: 'leadTable.html'
-    }
+    };
   }
 }
-ko.applyBindings(new AppViewModel(), document.getElementById('newPage'));
+ko.applyBindings(new AppViewModel(), document.getElementById('app'));
