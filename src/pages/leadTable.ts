@@ -3,7 +3,7 @@ import { Grid } from 'gridjs';
 import template from './leadTable.html';
 class LeadTable {
   response: {};
-  check = new Lead();
+  check = new Lead('https://jsonplaceholder.typicode.com/users');
   constructor() {
     this.response = new Grid({
       columns: ['Creation Date', 'Title', 'Name', 'Email', 'Phone', 'City', 'Country', 'Language'],

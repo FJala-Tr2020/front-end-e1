@@ -11,24 +11,22 @@ export interface ILead {
 }
 class Lead {
   miData: any;
-  constructor() {
-    this.miData = ():any =>
-      new Promise((resolve) => {
-        axios.get('https://jsonplaceholder.typicode.com/users').then(({ data }) => {
-          resolve(
-            data.map((item: ILead) => [
-              '02/31/2021',
-              item.website,
-              item.name,
-              item.email,
-              item.phone,
-              'La Paz',
-              'Bol',
-              'Esp'
-            ])
-          );
-        });
-      });
+  constructor(url: string) {
+    this.miData = (): any =>
+      axios
+        .get(url)
+        .then(({ data }) =>
+          data.map((item: ILead) => [
+            '02/31/2021',
+            item.website,
+            item.name,
+            item.email,
+            item.phone,
+            'La Paz',
+            'Bol',
+            'Esp'
+          ])
+        );
   }
 }
 export default Lead;
