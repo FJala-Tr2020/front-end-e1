@@ -7,7 +7,10 @@ class LeadTable {
   constructor() {
     this.response = new Grid({
       columns: ['Creation Date', 'Title', 'Name', 'Email', 'Phone', 'City', 'Country', 'Language'],
-      data: this.check.miData
+      data: this.check.miData,
+      className: {
+        table: 'table'
+      }
     }).render(document.getElementById('leadTable')!);
   }
 }
