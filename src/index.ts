@@ -11,10 +11,5 @@ ko.components.register('modal-version', ModalVersion);
 ko.components.register('navbar', Navbar);
 ko.components.register('lead-table', LeadTable);
 
-class ViewModel {
-  isDisplayed: ko.Observable<boolean>;
-  constructor() {
-    this.isDisplayed = ko.observable(false);
-  }
-}
+class ViewModel {}
 ko.applyBindings(new ViewModel());
