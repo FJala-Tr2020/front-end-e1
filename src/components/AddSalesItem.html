@@ -1,0 +1,30 @@
+<div class="container-fluid mt-5">
+    <div>
+        <label for="nombre">Name:</label>
+        <input placeholder="Name" data-bind="textInput: name" name="name" type="text" />
+        <label for="phone">Phone:</label>
+        <input placeholder="+591-000000" data-bind="textInput: phone" name="phone" type="tel" />
+        <label for="email">Email:</label>
+        <input placeholder="account@example.com" data-bind="textInput: email" name="email" type="text" />
+        <button class="btn btn-success" data-bind="click: show">Add Account</button>
+    </div>
+</div>
+
+
+<br>
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true"></div>
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11" data-bind="visible: isDisplayed">
+    <div class="toast-header">
+        <strong class="me-auto">
+            <p>Name : <strong data-bind="text: name"></strong></p>
+            <p>Phone :<strong data-bind='text: phone'></strong></p>
+            <p>Email :<strong data-bind='text: email'></strong></p>
+
+        </strong>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body bg-success text-white">
+        <strong>Account Added Successfully! </strong>
+    </div>
+</div>
+</div>
